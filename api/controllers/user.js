@@ -12,8 +12,14 @@ const createUser = (req, res) => {
   })
   
   newUser.save()
-  .then(response => console.log(response))
-  .catch(err => console.log(err));
+  .then(response => {
+    res.status(200);
+    res.send(`The user was saved`);
+  })
+  .catch(err => {
+    res.status(500);
+    res.send(`There was an error on the server`);
+  });
 };
 
 module.exports = {
